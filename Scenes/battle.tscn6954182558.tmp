@@ -1,0 +1,225 @@
+[gd_scene load_steps=28 format=3 uid="uid://c1jqvnqkha7ri"]
+
+[ext_resource type="Script" uid="uid://bb8d1iugslicm" path="res://Scripts/battle.gd" id="1_pd5xk"]
+[ext_resource type="Texture2D" uid="uid://duswm6dflbhtx" path="res://images/Victory.jpg" id="2_7vlph"]
+[ext_resource type="Script" uid="uid://debyfgn2apgca" path="res://Scripts/battle_ended.gd" id="3_fonr4"]
+[ext_resource type="Script" uid="uid://20jdl6q5vfml" path="res://Scripts/char_1.gd" id="3_ww2ai"]
+[ext_resource type="Texture2D" uid="uid://d2tlgcpjvthlu" path="res://images/Renhai1.jpg" id="4_7vlph"]
+[ext_resource type="Texture2D" uid="uid://o7ue65y2qdr3" path="res://images/Uis/Hp_bar the bar.png" id="4_qeyqd"]
+[ext_resource type="Script" uid="uid://dxhw3tmtikunw" path="res://Scripts/charhp1.gd" id="4_ww2ai"]
+[ext_resource type="Texture2D" uid="uid://l563t250tw34" path="res://images/Uis/Hp_bar the hp.png" id="5_k7mbx"]
+[ext_resource type="Script" uid="uid://b6nxpi4idnwf" path="res://Scripts/char_2.gd" id="8_heh15"]
+[ext_resource type="Script" uid="uid://3v1b72la7otw" path="res://Scripts/charhp2.gd" id="8_k7mbx"]
+[ext_resource type="Texture2D" uid="uid://cwuq18520uhy0" path="res://images/Kittyhawk1.jpg" id="9_7vlph"]
+[ext_resource type="Script" uid="uid://32r4dn3f5g4l" path="res://Scripts/enemyhp_1.gd" id="10_upb72"]
+[ext_resource type="Script" uid="uid://ce5l2lk1dtrgt" path="res://Scripts/enemy_1.gd" id="11_vd41i"]
+[ext_resource type="Texture2D" uid="uid://d37q51mtajys8" path="res://images/Enemy1.jpg" id="12_486ce"]
+[ext_resource type="Script" uid="uid://dipmryquot6rw" path="res://Scripts/enemyhp_2.gd" id="12_rssjf"]
+[ext_resource type="Texture2D" uid="uid://duvq8w0v2yfgt" path="res://images/destroyed.png" id="14_cwdtu"]
+[ext_resource type="Script" uid="uid://norrx3dj83ne" path="res://Scripts/enemy_2.gd" id="14_nne6o"]
+[ext_resource type="Texture2D" uid="uid://b083a6sdn3lid" path="res://images/Enemy2.jpg" id="15_387br"]
+[ext_resource type="Script" uid="uid://d0sd4x4jfgf78" path="res://Scripts/pausemenu.gd" id="18_7vlph"]
+[ext_resource type="Texture2D" uid="uid://carr7jmk2hlxp" path="res://images/Ocean_ver2.png" id="19_486ce"]
+[ext_resource type="Texture2D" uid="uid://dv1i35kundg78" path="res://images/055! (colored no bg).png" id="20_387br"]
+[ext_resource type="Script" uid="uid://d3fvryebkfsa6" path="res://Scenes/band.gd" id="20_kcxpu"]
+[ext_resource type="Texture2D" uid="uid://bio21sabxdl01" path="res://images/Kittyhawk.png" id="21_emx8f"]
+[ext_resource type="Texture2D" uid="uid://cr5n11btm0vux" path="res://images/Enemylazyversion.png" id="23_hgaye"]
+
+[sub_resource type="Animation" id="Animation_kcxpu"]
+resource_name = "band_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1107, 742), Vector2(1171, 757), Vector2(1124, 757)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.261799, 0.261799, 0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_hgaye"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1107, 742)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cwdtu"]
+_data = {
+&"RESET": SubResource("Animation_hgaye"),
+&"band_attack": SubResource("Animation_kcxpu")
+}
+
+[node name="Battle" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_pd5xk")
+
+[node name="Battle_ended" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(576, 309)
+texture = ExtResource("2_7vlph")
+script = ExtResource("3_fonr4")
+
+[node name="Char1" type="Sprite2D" parent="."]
+position = Vector2(187.949, 166.899)
+scale = Vector2(0.602417, 0.595964)
+texture = ExtResource("4_7vlph")
+script = ExtResource("3_ww2ai")
+
+[node name="Charhp1" type="TextureProgressBar" parent="."]
+offset_left = 1.0
+offset_top = 210.0
+offset_right = 152.0
+offset_bottom = 223.0
+texture_under = ExtResource("4_qeyqd")
+texture_progress = ExtResource("5_k7mbx")
+script = ExtResource("4_ww2ai")
+
+[node name="Char2" type="Sprite2D" parent="."]
+position = Vector2(190, 326.5)
+scale = Vector2(0.429058, 0.410377)
+texture = ExtResource("9_7vlph")
+script = ExtResource("8_heh15")
+
+[node name="Charhp2" type="TextureProgressBar" parent="."]
+offset_left = -1.0
+offset_top = 366.0
+offset_right = 150.0
+offset_bottom = 379.0
+texture_under = ExtResource("4_qeyqd")
+texture_progress = ExtResource("5_k7mbx")
+script = ExtResource("8_k7mbx")
+
+[node name="Enemy1" type="Sprite2D" parent="."]
+position = Vector2(986, 166.5)
+scale = Vector2(0.37415, 0.393365)
+texture = ExtResource("12_486ce")
+script = ExtResource("11_vd41i")
+
+[node name="Destroyed" type="Sprite2D" parent="Enemy1"]
+visible = false
+position = Vector2(-54.0179, 41.9458)
+scale = Vector2(0.832422, 0.722461)
+texture = ExtResource("14_cwdtu")
+
+[node name="Enemyhp1" type="TextureProgressBar" parent="."]
+offset_left = 1001.0
+offset_top = 208.0
+offset_right = 1152.0
+offset_bottom = 221.0
+texture_under = ExtResource("4_qeyqd")
+texture_progress = ExtResource("5_k7mbx")
+script = ExtResource("10_upb72")
+
+[node name="Enemy2" type="Sprite2D" parent="."]
+position = Vector2(986.092, 317.188)
+scale = Vector2(0.315361, 0.3505)
+texture = ExtResource("15_387br")
+script = ExtResource("14_nne6o")
+
+[node name="Destroyed" type="Sprite2D" parent="Enemy2"]
+visible = false
+position = Vector2(-54.0179, 41.9458)
+scale = Vector2(0.832422, 0.722461)
+texture = ExtResource("14_cwdtu")
+
+[node name="Enemyhp2" type="TextureProgressBar" parent="."]
+offset_left = 1002.0
+offset_top = 359.0
+offset_right = 1153.0
+offset_bottom = 372.0
+texture_under = ExtResource("4_qeyqd")
+texture_progress = ExtResource("5_k7mbx")
+script = ExtResource("12_rssjf")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+script = ExtResource("18_7vlph")
+
+[node name="OceanVer2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(575.5, 326)
+scale = Vector2(0.625521, 0.644445)
+texture = ExtResource("19_486ce")
+
+[node name="band" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(1107, 742)
+rotation = 0.261799
+scale = Vector2(2.53876, 0.547729)
+texture = ExtResource("15_387br")
+script = ExtResource("20_kcxpu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="band"]
+libraries = {
+&"": SubResource("AnimationLibrary_cwdtu")
+}
+
+[node name="Char1illu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(853.234, 483.25)
+scale = Vector2(0.29968, 0.268472)
+texture = ExtResource("20_387br")
+
+[node name="Char2illu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(876.781, 470.224)
+scale = Vector2(0.473073, 0.475044)
+texture = ExtResource("21_emx8f")
+
+[node name="EnemUniversal" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(816.125, 538.324)
+scale = Vector2(0.484881, 0.503423)
+texture = ExtResource("23_hgaye")
+
+[node name="Tip" type="RichTextLabel" parent="."]
+z_index = 3
+offset_left = 344.0
+offset_top = 540.0
+offset_right = 878.0
+offset_bottom = 639.0
+theme_override_font_sizes/normal_font_size = 22
+text = "Tip: Press 1 for Health Boost (One per match)"
+
+[connection signal="battleended" from="." to="Battle_ended" method="_on_battle_battleended"]
+[connection signal="char1hit" from="." to="Char1" method="_on_battle_char_1_hit"]
+[connection signal="char2hit" from="." to="Char2" method="_on_battle_char_2_hit"]
+[connection signal="enem1hit" from="." to="Enemy1" method="_on_battle_enem_1_hit"]
+[connection signal="enem2hit" from="." to="Enemy2" method="_on_battle_enem_2_hit"]

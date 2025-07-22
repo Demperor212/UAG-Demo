@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://docb8hq8l4k48"]
+
+[ext_resource type="Script" uid="uid://b611mdxfm4uyp" path="res://Scenes/pre_battle.gd" id="1_b427t"]
+
+[node name="Pre_battle" type="Node2D"]
+script = ExtResource("1_b427t")

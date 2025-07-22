@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://otlr4artch2g"]
+
+[ext_resource type="Texture2D" uid="uid://l0o8vce54iq0" path="res://Navigation.png" id="1_ekuf8"]
+[ext_resource type="Script" uid="uid://cv65c6q20wb2u" path="res://Scripts/player.gd" id="2_gxgjm"]
+
+[node name="Navigation" type="Node2D"]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(150, 179)
+texture = ExtResource("1_ekuf8")
+offset = Vector2(1.5, -4)
+script = ExtResource("2_gxgjm")

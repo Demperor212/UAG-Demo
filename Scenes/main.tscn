@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdwnc0k6kqyue"]
+
+[ext_resource type="Script" uid="uid://cmg8xhia6him1" path="res://Scenes/button.gd" id="1_bo1nx"]
+[ext_resource type="Texture2D" uid="uid://dv1i35kundg78" path="res://images/055! (colored no bg).png" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://b083a6sdn3lid" path="res://images/Enemy2.jpg" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://c5d8ou5cyxpot" path="res://Scripts/quit_button.gd" id="4_jjvhh"]
+
+[node name="Main" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 618.0
+offset_top = 54.0
+offset_right = 1134.0
+offset_bottom = 295.0
+theme_override_font_sizes/normal_font_size = 40
+text = "UAG: A Demo's Demo
+(Sorry for could not even make a full demo)"
+
+[node name="Start_button" type="Button" parent="."]
+offset_left = 656.0
+offset_top = 371.0
+offset_right = 994.0
+offset_bottom = 498.0
+text = "START"
+script = ExtResource("1_bo1nx")
+
+[node name="055!(coloredNoBg)" type="Sprite2D" parent="."]
+position = Vector2(333, 420)
+scale = Vector2(0.327129, 0.263819)
+texture = ExtResource("1_jjgbg")
+
+[node name="Enemy2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1277.75, 329.5)
+scale = Vector2(2.44747, 2.62)
+texture = ExtResource("3_8gbba")
+
+[node name="Quit_button" type="Button" parent="."]
+offset_left = 735.0
+offset_top = 518.0
+offset_right = 919.0
+offset_bottom = 604.0
+text = "Quit"
+script = ExtResource("4_jjvhh")
+
+[connection signal="pressed" from="Start_button" to="Start_button" method="_on_pressed"]
+[connection signal="pressed" from="Quit_button" to="Quit_button" method="_on_pressed"]
